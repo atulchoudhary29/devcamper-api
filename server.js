@@ -13,6 +13,7 @@ const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const cors = require('cors');
+const bodyParser = require("body-parser")
 
 
 // Custom Middleware :-
@@ -38,6 +39,7 @@ const app = express();
 // Body-Parser
 app.use(express.json());
 
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Cookie Parser
 app.use(cookieParser());
@@ -79,7 +81,6 @@ app.use(cors());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 // Mount routers
